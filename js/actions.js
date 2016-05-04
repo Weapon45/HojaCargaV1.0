@@ -15,8 +15,9 @@ var fn = {
 			$.mobile.loading("show",{theme: 'b'});
 		}
 		else{
-			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
+			//navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
+			alert("todos los campos son requeridos");
 		}
 	}
 };
-$(fn.ready);
+$(fn.init);
