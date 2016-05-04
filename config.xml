@@ -16,4 +16,7 @@
 		
 		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait"></preference>		
+		<gap:plugin name="org.apache.cordova.dialogs"></gap:plugin>
+		<gap:plugin name="org.apache.cordova.vibration"></gap:plugin>
+		<gap:plugin name="org.apache.cordova.device"></gap:plugin>
 	</widget>
