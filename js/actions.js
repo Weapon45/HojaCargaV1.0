@@ -14,20 +14,19 @@ var fn = {
 		if(nom != '' && passw != ''){
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
-				type: "POST",
-				dataType: "json",
-				contentType: "application/json",
-				url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/HelloWord",
-				data: {},
-				success: function(data){
-					navigator.notification.alert("Entro al web service",null,"Felicidades","Aceptar");
-					alert(data.d);
-				}
-				}
-			}).done(function( msg ){
-				alert("entro");
-				alert(msg);
-			})
+			  type: "POST",
+			  contentType: "application/json; charset=utf-8",
+			  dataType: "json",
+			  url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/HelloWorld",
+			  data: "{}",
+			  success: function(msg){
+				  alert(msg.d);
+				  //$("body").append(msg.d); //will append "Hello world" to body tag
+			  },
+			  error: function () {
+
+			  }
+			});
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
