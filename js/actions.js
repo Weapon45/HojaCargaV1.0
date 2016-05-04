@@ -13,7 +13,7 @@ var fn = {
 		var passw = $('#pass').val();
 		if(nom != '' && passw != ''){
 			//$.mobile.loading("show",{theme: 'b'});
-			$.ajax({
+			/* $.ajax({
 				method: "POST",
 				url: "http://servidoriis.laitaliana.com.mx/OV/WebServices/Service1.asmx/HelloWord",
 				data: {},
@@ -21,7 +21,26 @@ var fn = {
 					navigator.notification.alert(jq+txt,null,"Error","Aceptar");
 				}
 			}).done(function(msg){				navigator.notification.alert(msg.d,null,"Error","Aceptar");	
-			});
+			}); */
+			$.ajax({
+                       type: "POST",
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       url:    "http://servidoriis.laitaliana.com.mx/OV/WebServices/Service1.asmx/HelloWorld",
+                       data: '{}',
+                       success: function(msg) {
+                       jsonArray = $.parseJSON(msg.d);
+                       var $ul = $( '<ul id="details">' );
+                       for(i=0; i < jsonArray.length; i++)
+                       {
+                       $("#details").append('<li id="'+i+'" name="head" >'+jsonArray[i].name+'</li>' );
+                       }
+                       $('#details').listview('refresh');
+                       },
+                       error: function(msg) {
+                       alert("Error");
+                       }
+                       });
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
