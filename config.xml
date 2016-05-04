@@ -13,7 +13,5 @@
 		<author href="www.laitaliana.com.mx" email="orlando_vazquez@laitaliana.com.mx">
 			Ing. Orlando Vazquez
 		</author>
-		<preference name="orientation" value="portrait"></preference>
-		
-		<gap:plugin name="org.apache.cordova.vibration"></gap:plugin>
+		<preference name="orientation" value="portrait"></preference>		
 	</widget>
