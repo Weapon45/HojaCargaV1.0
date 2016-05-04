@@ -38,7 +38,7 @@ var fn = {
                        $('#details').listview('refresh');
                        },
                        error: function(msg) {
-                       alert("Error");
+                       alert(msg.d);
                        }
                        });
 		}
