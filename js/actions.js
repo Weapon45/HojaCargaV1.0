@@ -15,14 +15,13 @@ var fn = {
 			//$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
 				method: "POST",
-				url: "http://servidoriis.laitaliana.com.mx/OV/WebServices/Service1.asmx/CelsiusFahrenheit",
-				data: {Celcius: '10.02'},
+				url: "http://servidoriis.laitaliana.com.mx/OV/WebServices/Service1.asmx/HelloWord",
+				data: {},
 				error: function(jq,txt){
 					navigator.notification.alert(jq+txt,null,"Error","Aceptar");
 				}
-			}).done(function(msg){
-				alert(msg.d);
-			})
+			}).done(function(msg){				navigator.notification.alert(msg.d,null,"Error","Aceptar");	
+			});
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
