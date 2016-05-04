@@ -27,15 +27,9 @@ var fn = {
                        contentType: "application/json; charset=utf-8",
                        dataType: "json",
                        url:    "http://servidoriis.laitaliana.com.mx/OV/WebServices/Service1.asmx/HelloWorld",
-                       data: '{}',
+                       data: {},
                        success: function(msg) {
-                       jsonArray = $.parseJSON(msg.d);
-                       var $ul = $( '<ul id="details">' );
-                       for(i=0; i < jsonArray.length; i++)
-                       {
-                       $("#details").append('<li id="'+i+'" name="head" >'+jsonArray[i].name+'</li>' );
-                       }
-                       $('#details').listview('refresh');
+                       alert(msg.d);
                        },
                        error: function(msg) {
                        alert(msg.d);
