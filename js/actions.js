@@ -14,18 +14,16 @@ var fn = {
 		if(nom != '' && passw != ''){
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
-			  type: "POST",
-			  contentType: "application/json; charset=utf-8",
-			  dataType: "json",
-			  url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/HelloWorld",
-			  data: "{}",
-			  success: function(msg){
-				  alert(msg.d);
-				  //$("body").append(msg.d); //will append "Hello world" to body tag
-			  },
-			  error: function () {
-
-			  }
+				method: "POST",
+				url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/HelloWord",
+				data: {},
+				error: function(jq,txt){
+					$.mobile.loading("hide");
+					alert(jq+txt);
+				}
+			}).done(function( data ) {
+				alert("entro");
+				alert(data.d);
 			});
 		}
 		else{
