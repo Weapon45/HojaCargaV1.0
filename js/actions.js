@@ -21,7 +21,7 @@ var fn = {
 					navigator.notification.alert(jq+txt,null,"Error","Aceptar");
 				}
 			}).done(function(msg){				
-				navigator.notification.alert(msg.d,null,"Error","Aceptar");	
+				navigator.notification.alert(msg.d,null,"Felicidades","Aceptar");	
 			}); 
 		}
 		else{
