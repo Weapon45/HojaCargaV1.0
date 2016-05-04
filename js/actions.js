@@ -12,19 +12,17 @@ var fn = {
 		var nom = $('#user').val();
 		var passw = $('#pass').val();
 		if(nom != '' && passw != ''){
-			$.mobile.loading("show",{theme: 'b'});
+			//$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
 				method: "POST",
-				url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/HelloWord",
-				data: {},
+				url: "http://servidoriis.laitaliana.com.mx/OV/WebServices/Service1.asmx/CelsiusFahrenheit",
+				data: {Celcius: 10.02},
 				error: function(jq,txt){
-					$.mobile.loading("hide");
-					alert(jq+txt);
+					navigator.notification.alert("Error Al Accesar",null,"Error","Aceptar");
 				}
-			}).done(function( data ) {
-				alert("entro");
-				alert(data.d);
-			});
+			}).done(function(msg){
+				alert(msg.d);
+			})
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
