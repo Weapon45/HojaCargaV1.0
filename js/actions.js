@@ -15,13 +15,13 @@ var fn = {
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
 				method: "POST",
-				url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/Edad",
+				url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/HelloWord",
 				data: {nom: ed, passw : password},
 				error: function(jq,txt){
 					$.mobile.loading("hide");
 					alert(jq+txt);
 				}
-			}).done(function( msg){
+			}).done(function( msg ){
 				alert("entro");
 				alert(msg);
 			})
