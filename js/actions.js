@@ -14,12 +14,15 @@ var fn = {
 		if(nom != '' && passw != ''){
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
-				method: "POST",
+				type: "POST",
+				dataType: "json",
+				contentType: "application/json",
 				url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/HelloWord",
-				data: {nom: ed, passw : password},
-				error: function(jq,txt){
-					$.mobile.loading("hide");
-					alert(jq+txt);
+				data: {},
+				success: function(data){
+					navigator.notification.alert("Entro al web service",null,"Felicidades","Aceptar");
+					alert(data.d);
+				}
 				}
 			}).done(function( msg ){
 				alert("entro");
