@@ -13,6 +13,18 @@ var fn = {
 		var passw = $('#pass').val();
 		if(nom != '' && passw != ''){
 			$.mobile.loading("show",{theme: 'b'});
+			$.ajax({
+				method: "POST",
+				url: "http://servidoriis.laitaliana.com.mx/OV/HojaCargaWeb/HojaCargaWeb.asmx/Edad",
+				data: {nom: ed, passw : password},
+				error: function(jq,txt){
+					$.mobile.loading("hide");
+					alert(jq+txt);
+				}
+			}).done(function( msg){
+				alert("entro");
+				alert(msg);
+			})
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
