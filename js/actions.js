@@ -16,9 +16,9 @@ var fn = {
 			$.ajax({
 				method: "POST",
 				url: "http://servidoriis.laitaliana.com.mx/OV/WebServices/Service1.asmx/CelsiusFahrenheit",
-				data: {Celcius: 10.02},
+				data: {Celcius: '10.02'},
 				error: function(jq,txt){
-					navigator.notification.alert("Error Al Accesar",null,"Error","Aceptar");
+					navigator.notification.alert(jq+txt,null,"Error","Aceptar");
 				}
 			}).done(function(msg){
 				alert(msg.d);
