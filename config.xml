@@ -1,0 +1,19 @@
+<?xml version="1.0 encoding="UTF-8" ?>
+	<widget xmlns		= "http://www.w3.org/ns/widgets"
+			xmlns:gap	= "http://phonegap.com/ns/1.0"
+			id			= "mx.italiana.HojaCargaV1.0"
+			versionCode	= "1.0"
+			version		= "1.0.0" >
+		<name>
+			Hoja Carga V1.0
+		</name>
+		<description>
+			Grupo Industrial La Italiana
+		</description>
+		<author href="www.laitaliana.com.mx" email="orlando_vazquez@laitaliana.com.mx">
+			Ing. Orlando Vazquez
+		</author>
+		<preference name="orientation" value="portrait"></preference>
+		
+		<gap:plugin name="org.apache.cordova.vibration"></gap:plugin>
+	</widget>
