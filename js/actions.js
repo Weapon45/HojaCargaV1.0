@@ -11,41 +11,30 @@ var fn = {
 		// FUNCION PARA LOGUEARSE
 		var nom = $('#user').val();
 		var passw = $('#pass').val();
-		if(nom != '' && passw != ''){
+		if(nom != '' && passw != ''){	
 			$.mobile.loading("show",{theme: 'b'});
-			var num1 = 10;
-			var num2 = 2;
 			$.ajax({
-                    //Tipo de llamada
-                    type: "POST",
-
-                    //Dirección del WebMethod, o sea, Página.aspx/Método
-                    url: "http://servidoriis.laitaliana.com.mx/OV/Web/Default.aspx/Sumar",
-
-                    //Parámetros para pasarle al método 
-                    data: {Valor1: num1, Valor2: num2},
-
-                    //Tipo de contenido
+                    type: 'POST',
+ 
+                    url: "http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola",
+                    data: {nombre: nom}, 
                     contentType: "application/json; charset=utf-8",
-
-                    //Tipo de datos
-                    dataType: "json",
-
-                    //Función a la cual llamar cuando se pudo llamar satisfactoriamente al método
-                    success: function(msg){
-						alert(msg.d);
-					},
-
-                    //Función a la cual llamar cuando se producen errores
-                    error: function(msg){
-						alert("Error " + msg.d);
-					}
+                    dataType: "jsonp",
+                    crossDomain: true,
+ 
+                    success: function (msg) {
+						$.mobile.loading("hide");
+                        alert(JSON.stringify(msg));
+                    },
+                    error: function (msg) {
+                        alert("Error: " + JSON.stringify(msg));
+                    }
                 });
 		}
 		else{
-			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
-			//alert("todos los campos son requeridos");
+			//navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
+			alert("todos los campos son requeridos");
 		}
 	}
 };
-$(fn.ready);
+$(fn.init);
