@@ -24,17 +24,18 @@ var fn = {
  
                     success: function (msg) {
 						$.mobile.loading("hide");
-                        alert(JSON.stringify(msg));
+                        //alert(JSON.stringify(msg));
+						navigator.notification.alert(JSON.stringify(msg),null,"Felicidades","Aceptar");
                     },
                     error: function (msg) {
-                        alert("Error: " + JSON.stringify(msg));
+                        navigator.notification.alert(JSON.stringify(msg),null,"Error","Aceptar");
                     }
                 });
 		}
 		else{
-			//navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
-			alert("todos los campos son requeridos");
+			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
+			//alert("todos los campos son requeridos");
 		}
 	}
 };
-$(fn.init);
+$(fn.ready);
