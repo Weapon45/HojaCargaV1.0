@@ -13,7 +13,6 @@
 		<author href="www.laitaliana.com.mx" email="orlando_vazquez@laitaliana.com.mx">
 			Ing. Orlando Vazquez
 		</author>
-		<access origin=".*"></access>
 		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait"></preference>		
 		<gap:plugin name="org.apache.cordova.dialogs"></gap:plugin>
