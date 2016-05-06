@@ -5,7 +5,7 @@ var fn = {
 	init: function(){
 		// FUNCION PARA INICIO
 		window.location.href = '#login';
-		$('#BtnLogin').click(fn.Loguear);
+		$('#BtnLogin').tap(fn.Loguear);
 	},
 	Loguear: function(){
 		// FUNCION PARA LOGUEARSE
@@ -19,14 +19,14 @@ var fn = {
                     data: {nombre: nom}, 
                     contentType: "application/json; charset=utf-8",
                     dataType: "jsonp",
-                    crossDomain: true, 
-                    success: function (msg,jqXHR) {
+                    //crossDomain: true, 
+                    success: function (msg) {
 						$.mobile.loading("hide");						
-                       // alert(msg.respuesta);
+                       //alert(msg.respuesta);
 						navigator.notification.alert(msg.respuesta,null,"Felicidades","Aceptar");
                     },
-                    error: function (msg,jqXHR) {                        
-						navigator.notification.alert(msg.d + jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
+                    error: function (jqXHR) {                        
+						navigator.notification.alert(jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
 						//alert("Error");
                     }
                 });		
