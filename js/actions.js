@@ -14,18 +14,16 @@ var fn = {
 		if(nom != '' && passw != ''){	
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
-                    type: 'POST',
- 
+                    type: 'POST', 
                     url: "http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola",
                     data: {nombre: nom}, 
                     contentType: "application/json; charset=utf-8",
                     dataType: "jsonp",
-                    crossDomain: true,
- 
+                    crossDomain: true, 
                     success: function (msg) {
 						$.mobile.loading("hide");
                         //alert(JSON.stringify(msg));
-						navigator.notification.alert(JSON.stringify(msg),null,"Felicidades","Aceptar");
+						navigator.notification.alert("Correcto",null,"Felicidades","Aceptar");
                     },
                     error: function (msg) {
                         navigator.notification.alert(JSON.stringify(msg),null,"Error","Aceptar");
