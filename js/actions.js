@@ -14,7 +14,7 @@ var fn = {
 		if(nom != '' && passw != ''){	
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
-                    type: 'POST', 
+                    type: "POST", 
                     url: "http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola",
                     data: {nombre: nom}, 
                     contentType: "application/json; charset=utf-8",
@@ -22,8 +22,8 @@ var fn = {
                     crossDomain: true, 
                     success: function (msg,jqXHR) {
 						$.mobile.loading("hide");						
-                        alert(JSON.stringify(msg.respuesta) + " " + JSON.stringify(msg.statusText));
-						navigator.notification.alert(JSON.stringify(msg.respuesta),null,"Felicidades","Aceptar");
+                        //alert(msg.respuesta);
+						navigator.notification.alert(msg.respuesta,null,"Felicidades","Aceptar");
                     },
                     error: function (msg,jqXHR) {                        
 						navigator.notification.alert(msg.d + jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
