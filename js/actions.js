@@ -20,16 +20,20 @@ var fn = {
                     contentType: "application/json; charset=utf-8",
                     dataType: "jsonp",
                     //crossDomain: true, 
-                    success: function (msg) {
+                    /*success: function (msg) {
 						$.mobile.loading("hide");						
                        //alert(msg.respuesta);
 						navigator.notification.alert(msg.respuesta,null,"Felicidades","Aceptar");
-                    },
+                    },*/
                     error: function (jqXHR) {                        
 						navigator.notification.alert(jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
 						//alert("Error");
                     }
-                });		
+                }).done(function (msg){
+				//alert(msg.respuesta);
+				$.mobile.loading("hide");
+				navigator.notification.alert(jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
+			});		
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
