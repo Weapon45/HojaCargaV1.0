@@ -20,15 +20,16 @@ var fn = {
                     contentType: "application/json; charset=utf-8",
                     dataType: "jsonp",
                     crossDomain: true, 
-                    success: function (msg) {
+                    success: function (msg,jqXHR) {
 						$.mobile.loading("hide");
-                        //alert(JSON.stringify(msg));
-						navigator.notification.alert("Correcto",null,"Felicidades","Aceptar");
+                        alert(JSON.stringify(msg.respuesta));
+						navigator.notification.alert(JSON.stringify(msg.respuesta),null,"Felicidades","Aceptar");
                     },
-                    error: function (msg) {
+                    error: function (msg,jqXHR) {
                         navigator.notification.alert(JSON.stringify(msg),null,"Error","Aceptar");
                     }
                 });
+			
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
@@ -36,4 +37,4 @@ var fn = {
 		}
 	}
 };
-$(fn.ready);
+$(fn.init);
