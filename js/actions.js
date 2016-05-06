@@ -21,14 +21,12 @@ var fn = {
                     dataType: "jsonp",
                     crossDomain: true, 
                     success: function (msg,jqXHR) {
-						$.mobile.loading("hide");
-						alert(jqXHR.readyState);
-                        alert(JSON.stringify(msg.respuesta));
+						$.mobile.loading("hide");						
+                        alert(JSON.stringify(msg.respuesta) + " " + JSON.stringify(msg.statusText));
 						navigator.notification.alert(JSON.stringify(msg.respuesta),null,"Felicidades","Aceptar");
                     },
-                    error: function (msg,jqXHR) {
-                        navigator.notification.alert(JSON.stringify(msg),null,"Error","Aceptar");
-						alert(msg.d + jqXHR.responseText + jqXHR.readyState);
+                    error: function (msg,jqXHR) {                        
+						navigator.notification.alert(msg.d + jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
                     }
                 });			
 		}
@@ -38,4 +36,4 @@ var fn = {
 		}
 	}
 };
-$(fn.init);
+$(fn.ready);
