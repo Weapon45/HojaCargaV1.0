@@ -22,14 +22,15 @@ var fn = {
                     crossDomain: true, 
                     success: function (msg,jqXHR) {
 						$.mobile.loading("hide");
+						alert(jqXHR.readyState);
                         alert(JSON.stringify(msg.respuesta));
 						navigator.notification.alert(JSON.stringify(msg.respuesta),null,"Felicidades","Aceptar");
                     },
                     error: function (msg,jqXHR) {
                         navigator.notification.alert(JSON.stringify(msg),null,"Error","Aceptar");
+						alert(msg.d + jqXHR.responseText + jqXHR.readyState);
                     }
-                });
-			
+                });			
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
