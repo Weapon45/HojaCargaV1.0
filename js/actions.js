@@ -14,7 +14,7 @@ var fn = {
 		if(nom != '' && passw != ''){	
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
-                    type: "POST", 
+                    method: "POST", 
                     url: "http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola",
                     data: {nombre: nom}, 
                     contentType: "application/json; charset=utf-8",
@@ -30,7 +30,7 @@ var fn = {
 						//alert("Error");
                     }
                 }).done(function (msg){
-				//alert(msg.respuesta);
+				alert(msg.respuesta);
 				$.mobile.loading("hide");
 				navigator.notification.alert(jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
 			});		
@@ -41,4 +41,4 @@ var fn = {
 		}
 	}
 };
-$(fn.ready);
+$(fn.init);
