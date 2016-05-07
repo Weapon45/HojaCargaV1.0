@@ -17,10 +17,13 @@ var fn = {
                     method: 'POST', 
                     url: 'http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola',
                     data: {nombre: nom}, 
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    //crossDomain: true, 
                     success: function (msg) {
 						$.mobile.loading("hide");						
-                       alert(msg);
-						navigator.notification.alert(msg,null,"Felicidades","Aceptar");
+                       alert(msg.respuesta);
+						navigator.notification.alert(msg.respuesta,null,"Felicidades","Aceptar");
                     },
                     error: function (jqXHR) {                        
 						navigator.notification.alert(jqXHR.responseText + jqXHR.readyState,null,"Error","Aceptar");
@@ -30,7 +33,7 @@ var fn = {
 		}
 		else{
 			navigator.notification.alert("Todos Los Campos Son Requeridos",null,"Error al Ingresar","Aceptar");
-			alert("todos los campos son requeridos");
+			//alert("todos los campos son requeridos");
 		}
 	}
 };
