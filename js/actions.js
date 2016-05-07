@@ -18,7 +18,7 @@ var fn = {
                     url: 'http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola',
                     data: {nombre: nom}, 
                     contentType: "application/json; charset=utf-8",
-                    dataType: "json",
+                    dataType: "jsonp",
                     //crossDomain: true, 
                     success: function (msg) {
 						$.mobile.loading("hide");						
