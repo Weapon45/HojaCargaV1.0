@@ -15,7 +15,7 @@ var fn = {
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
                     method: 'POST', 
-                    url: "http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola",
+                    url: 'http://servidoriis.laitaliana.com.mx/OV/webServices/reparto.asmx/hola',
                     data: {nombre: nom}, 
                     success: function (msg) {
 						$.mobile.loading("hide");						

@@ -15,7 +15,6 @@
 		</author>
 		<preference name="phonegap-version" value="3.7.0" />
 		
-		<access origin=".*"></access>
 		
 		<preference name="orientation" value="portrait"></preference>		
 		<gap:plugin name="org.apache.cordova.dialogs"></gap:plugin>
