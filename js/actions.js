@@ -39,7 +39,12 @@ var fn = {
 				dataType: "jsonp",
 				success: function (msg){
 					$.mobile.loading("hide");
-					navigator.notification.alert(msg.valor1,null,"Felicidades","Aceptar");
+					if (msg.valor1 == "correcto"){
+						navigator.notification.alert(msg.valor1,null,"Felicidades","Aceptar");
+					}
+					else{
+						navigator.notification.alert("Usuario y/o Contraseña Incorrecto",null,"Error","Aceptar");
+					}					
 				},
 				error: function(jq, txt){
 					alert(jq + txt.responseText);
