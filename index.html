@@ -7,7 +7,7 @@
 		<link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<! -- VENTANA LOGIN -->
+		<!-- VENTANA LOGIN -->
 		<div data-role="page" id="login">
 			<!-- <div data-role="header">				
 				<h1>ACCESO</h1> 
@@ -40,6 +40,77 @@
 				</ul>
 			</div>
 		</div>
+		<!-- VENTANA LOGIN -->
+		
+		<!-- VENTANA MENU PRINCIPAL -->
+		<div data-role="page" id="menu">
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider">
+						<center>
+							MENU PRINCIPAL
+						</center>
+					</li>
+				</ul>
+			</div>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider">
+						<center>
+							BOTONES ACCION
+						</center>
+					</li>
+					<li>
+						<input type="submit" value="Nueva Hoja" id="BtnNueva">
+					</li>
+					<li>
+						<input type="submit" value="Reimpresion Hoja" id="BtnReimpresion">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- VENTANA MENU PRINCIPAL -->
+		
+		<!-- VENTANA REIMPRESION -->
+		<div data-role="page" id="Reimpresion">
+			<div data-role="header">
+                <a href="#menu" data-rel="back">Atrás</a>
+            </div>
+			<br>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider">
+						<center>
+							RE-IMPRESION HOJA CARGA
+						</center>
+					</li>
+				</ul>
+			</div>
+			<div role="main" class="ui-content">
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider">
+						<center>
+							DATOS HOJA CARGA
+						</center>
+					</li>
+					<li>
+						<select id="reDivision">
+							<option value="">Division</option>
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+						</select>
+					</li>
+					<li>
+						<input type="text" id="reHoja" placeholder="Numero Hoja Carga">
+					</li>
+					<li>
+						<input type="submit" value="REIMPRIMIR" id="generaReimpresion">
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- VENTANA REIMPRESION -->
 		<!-- LIBRERIAS -->		
 		<script src="phonegap.js"></script>
 		<script src="js/jquery-1.12.2.min.js"></script>
