@@ -7,6 +7,7 @@ var fn = {
 		window.location.href = '#login';
 		$('#BtnLogin').tap(fn.Loguear);
 		$('#BtnReimpresion').tap(fn.reimprimir);
+		$('#generaReimpresion').tap(fn.generarReimpresion);
 	},
 	Loguear: function(){
 		// FUNCION PARA LOGUEARSE
@@ -43,6 +44,43 @@ var fn = {
 	},
 	reimprimir: function(){
 		window.location.href="#Reimpresion";
+	},
+	generarReimpresion: function(){
+		var diviReimpresion = $('#reDivision').val();
+		var hojaReimpresion = $('#reHoja').val();
+		var emailReimpresion = $('#reEmail').val();
+		
+		if(diviReimpresion != '' && hojaReimpresion != '' && emailReimpresion != ''){
+			$.mobile.loading("show",{theme: 'b'});
+			$.ajax({
+				method: 'POST',
+				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/reimpresion',
+				data: {division: diviReimpresion, hojacarga: hojaReimpresion, email: emailReimpresion},
+				contentType: "application/json; charset=utf-8",
+				dataType: "jsonp",
+				success: function (msg){
+					$.mobile.loading("hide");
+					if (msg.valor1 == "correcto"){
+						navigator.notification.alert("Se envio hoja de carga correctamente",null,"Correcto","Aceptar");
+					}
+					if (msg.valor1 == "noexiste") {
+						navigator.notification.alert("Hoja de Carga no Existe",null,"Error","Aceptar");
+					}					
+					if (msg.valor1 == "errorcorreo") {
+						navigator.notification.alert("Ocurrio un Error al Enviar Correo Electronico",null,"Error","Aceptar");
+					}
+					if (msg.valor1 == "errorpdf") {
+						navigator.notification.alert("Ocurrio un Error al Generar PDF",null,"Error","Aceptar");
+					}
+				},
+				error: function(jq, txt){
+					alert(jq + txt.responseText);
+				}
+			});
+		}
+		else{
+			navigator.notification.alert("Todos los campos son requeridos",null,"Error Reimpresion","Aceptar");
+		}
 	}
 };
 $(fn.ready);
