@@ -45,4 +45,4 @@ var fn = {
 		window.location.href="#Reimpresion";
 	}
 };
-$(fn.init);
+$(fn.ready);
