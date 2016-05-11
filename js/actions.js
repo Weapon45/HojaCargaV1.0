@@ -6,7 +6,6 @@ var fn = {
 		// FUNCION PARA INICIO
 		window.location.href = '#login';
 		$('#BtnLogin').tap(fn.Loguear);
-		$('#BtnNueva').tap(fn.capturarLPN);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 	},
 	Loguear: function(){
