@@ -92,11 +92,11 @@ var fn = {
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
 				data: {lpn: result.text},
-				//contentType: "application/json; charset=utf-8",
-				//dataType: "text",
+				contentType: "application/json; charset=utf-8",
+				dataType: "jsonp",
 				success: function (msg){
 					$.mobile.loading("hide");
-					alert(msg);			
+					alert(msg.valor1);			
 				},
 				error: function(jq, txt){
 					alert(jq + txt.responseText);
