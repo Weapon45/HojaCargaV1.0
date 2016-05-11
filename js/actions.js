@@ -97,9 +97,10 @@ var fn = {
 				success: function (msg){
 					$.mobile.loading("hide");
 					alert(msg.valor1);
-					$.each(msg,function(i,item){
-						alert(msg.valor1);
-					})
+					var data = msg;
+					$.each(data, function(i,item){
+						alert(data[1].valor1);
+					});
 				},
 				error: function(jq, txt){
 					alert(jq + txt.responseText);
