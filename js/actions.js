@@ -87,7 +87,21 @@ var fn = {
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
 			  //alert("Result: " + result.text);
-			  navigator.notification.alert("Resultado: " + result.text,null,"Felicidades","Aceptar");
+			  //navigator.notification.alert("Resultado: " + result.text,null,"Felicidades","Aceptar");
+			  $.ajax({
+				method: 'POST',
+				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
+				data: {lpn: result.text},
+				//contentType: "application/json; charset=utf-8",
+				dataType: "text",
+				success: function (msg){
+					$.mobile.loading("hide");
+					alert(msg);			
+				},
+				error: function(jq, txt){
+					alert(jq + txt.responseText);
+				}
+			});
 		  }, 
 		  function (error) {
 			  alert("Scanning failed: " + error);
