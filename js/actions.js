@@ -8,7 +8,6 @@ var fn = {
 		$('#BtnLogin').tap(fn.Loguear);
 		$('#BtnNueva').tap(fn.capturarLPN);
 		$('#BtnReimpresion').tap(fn.reimprimir);
-		$('#generaReimpresion').tap(fn.generarReimpresion);
 	},
 	Loguear: function(){
 		// FUNCION PARA LOGUEARSE
@@ -82,16 +81,6 @@ var fn = {
 		else{
 			navigator.notification.alert("Todos los campos son requeridos",null,"Error Reimpresion","Aceptar");
 		}
-	},
-	capturarLPN: function(){
-		cordova.plugins.barcodeScanner.scan(function(result){
-			ar s = "Result: " + result.text + "<br/>" +
-			"Format: " + result.format + "<br/>" +
-			"Cancelled: " + result.cancelled;
-		},
-		function (error) {
-			alert("Scanning failed: " + error);
-		});
 	}
 };
 $(fn.ready);
