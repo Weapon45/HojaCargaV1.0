@@ -97,11 +97,10 @@ var fn = {
 				success: function (msg){
 					$.mobile.loading("hide");
 					alert(msg.valor1);
-					alert(msg.result);
-					var jsons = msg.result;
-					$.each(jsons,function(){
-						$.each(this,function(valo,resul){
-							alert(valo + " " + resul);
+					$.each(msg, function (key, valor1) {
+						alert(key);
+						$.each(data, function (index, valor1) {
+							alert('index', data);
 						})
 					})
 				},
