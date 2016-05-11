@@ -96,7 +96,7 @@ var fn = {
 				dataType: "jsonp",
 				success: function (msg){
 					$.mobile.loading("hide");
-					var js = JSON.stringify(msg);
+					var js = JSON.stringify(msg.valor1);
 					alert(js);
 				},
 				error: function(jq, txt){
