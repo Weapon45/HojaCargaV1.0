@@ -93,7 +93,7 @@ var fn = {
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
 				data: {lpn: result.text},
 				//contentType: "application/json; charset=utf-8",
-				dataType: "text",
+				//dataType: "text",
 				success: function (msg){
 					$.mobile.loading("hide");
 					alert(msg);			
