@@ -97,7 +97,8 @@ var fn = {
 				success: function (msg){
 					$.mobile.loading("hide");
 					alert(msg.valor1);
-					var jsons = msg;
+					alert(msg.result);
+					var jsons = msg.result;
 					$.each(jsons,function(){
 						$.each(this,function(valo,resul){
 							alert(valo + " " + resul);
