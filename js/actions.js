@@ -98,7 +98,7 @@ var fn = {
 					$.mobile.loading("hide");
 					alert(msg);
 					alert(msg.valor1);
-					alert(JSON.stringify(msg));
+					alert(JSON.parse(msg));
 				},
 				error: function(jq, txt){
 					alert(jq + txt.responseText);
