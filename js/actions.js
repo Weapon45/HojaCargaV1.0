@@ -96,7 +96,7 @@ var fn = {
 				dataType: "json",
 				success: function (msg){
 					$.mobile.loading("hide");
-					alert(JSON.stringify(msg));
+					alert(msg);
 				},
 				error: function(jq, txt){
 					alert(jq + txt.responseText);
