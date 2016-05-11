@@ -96,7 +96,10 @@ var fn = {
 				dataType: "jsonp",
 				success: function (msg){
 					$.mobile.loading("hide");
-					alert(msg.valor1);			
+					alert(msg.valor1);
+					$.each(msg,function(i,item){
+						alert(msg.valor1);
+					})
 				},
 				error: function(jq, txt){
 					alert(jq + txt.responseText);
