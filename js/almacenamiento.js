@@ -1,4 +1,5 @@
 var HC = {
+	db: null,
 	partcodehc: null,
 	descriptionhc: null,
 	lpnhc: null,
@@ -48,13 +49,9 @@ var HC = {
 		HC.db.transaction(HC.insertarLineas,HC.error,null);
 	},
 	insertarLineas: function(tx){
+		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity)");
 		tx.executeSql("INSERT INTO lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
-		tx.executeSql("SELECT * FROM lineas", [], function(tx2, t){
-			for(i = 0; i < t.rows.lenght; i++){
-				navigator.notification.alert(t.rows.item(i).partcode);
-			}
-		});
 	},
 	error: function(){
 		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
