@@ -63,9 +63,9 @@ var HC = {
 			var x = 0;
 			var tabla = '<div data-role="listview" data-inset="true">';
 			for(i = 0; i < t.rows.lenght; i++){
-				tabla += '<li><h1>LINEA ' + x = x + 1 + '</h1><ul><li>' + t.rows.item(i).part_code + '</li><li>' + t.rows.item(i).part_description + '</li><li>' + t.rows.item(i).dc_license_plate_id + '</li><li>' + t.rows.item(i).ic_lot_number + '</li><li>' + t.rows.item(i).quantity + '</li></ul></li>';
+				tabla += '<li><h1>LINEA</h1><ul><li>' + t.rows.item(i).part_code + '</li><li>' + t.rows.item(i).part_description + '</li><li>' + t.rows.item(i).dc_license_plate_id + '</li><li>' + t.rows.item(i).ic_lot_number + '</li><li>' + t.rows.item(i).quantity + '</li></ul></li>';
 			}	
-			tabla += '</div>'
+			tabla += '</div>';
 			$("#lin").html(tabla);	
 		});
 	}
