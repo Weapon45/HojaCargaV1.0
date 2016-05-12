@@ -26,6 +26,7 @@ var fn = {
 					$.mobile.loading("hide");
 					$.each(msg,function(i, item){
 						if (msg[i].valor1 == "correcto"){
+							navigator.vibrate(1000);
 							window.location.href = "#menu";							
 						}
 						else{
