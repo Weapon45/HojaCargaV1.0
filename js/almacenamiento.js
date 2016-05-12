@@ -1,4 +1,5 @@
 var HC = {
+	pc: null,
 	leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
@@ -14,7 +15,7 @@ var HC = {
 					$.each(msg, function(i, item){
 						//alert(msg[i].NUM);
 						$.mobile.loading("hide");
-						HC.guardarLineas;
+						HC.guardarLineas(msg[i].PART_CODE);
 						//navigator.notification.alert("compañia: " + msg[i].COMPANY_CODE + "division: " + msg[i].DIVISION + "lpn: " + msg[i].DC_LICENSE_PLATE_ID + "almacen: " + msg[i].WAREHOUSE + "codigo: " + msg[i].PART_CODE + "descripcion: " + msg[i].DESCRIPCION + "cantidad: " + msg[i].CANTIDAD + "unidad: " + msg[i].UOM_1 + "lote: " + msg[i].IC_LOT_NUMBER + "nota: " + msg[i].DESPATCH_NOTE,null,"Felicidades","Aceptar");
 					});
 				},
@@ -30,7 +31,8 @@ var HC = {
 		  }
 	   );
 	},
-	guardarLineas: function(){
-		alert("si llama a esta funcion");
+	guardarLineas: function(pc){
+		HC.pc = pc;
+		navigator.notification.alert("Hola Si Entro");
 	}
 }
