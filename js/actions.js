@@ -6,7 +6,8 @@ var fn = {
 		// FUNCION PARA INICIO
 		window.location.href = '#login';
 		$('#BtnLogin').tap(fn.Loguear);
-		$('#BtnNueva').tap(fn.leerLpn);
+		$('#BtnNueva').tap(fn.nuevaHC);
+		$('#btnNewLPN').tap(fn.leerLpn);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(fn.generarReimpresion);
 	},
@@ -119,6 +120,9 @@ var fn = {
 			  navigator.notification.alert("Fallo al Scanear: " + error,null,"Error","Aceptar");
 		  }
 	   );
+	},
+	nuevaHC: function(){
+		window.location.href="#nuevaHoja";
 	}
 };
 $(fn.init);
