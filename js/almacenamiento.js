@@ -17,11 +17,11 @@ var HC = {
 				success: function (msg){						
 					//alert(JSON.stringify(msg));
 					$.each(msg, function(i, item){
-						//alert(msg[i].NUM);
-						$.mobile.loading("hide");
+						//alert(msg[i].NUM);						
 						HC.guardarLineas(msg[i].PART_CODE,msg[i].DESCRIPCION,msg[i].DC_LICENSE_PLATE_ID,msg[i].IC_LOT_NUMBER,msg[i].CANTIDAD + " " + msg[i].UOM_1);
 						//navigator.notification.alert("compañia: " + msg[i].COMPANY_CODE + "division: " + msg[i].DIVISION + "lpn: " + msg[i].DC_LICENSE_PLATE_ID + "almacen: " + msg[i].WAREHOUSE + "codigo: " + msg[i].PART_CODE + "descripcion: " + msg[i].DESCRIPCION + "cantidad: " + msg[i].CANTIDAD + "unidad: " + msg[i].UOM_1 + "lote: " + msg[i].IC_LOT_NUMBER + "nota: " + msg[i].DESPATCH_NOTE,null,"Felicidades","Aceptar");
 					});
+					$.mobile.loading("hide");
 					navigator.notification.alert("LPN capturada Correctamente",null,"Correcto","Aceptar");
 				},
 				error: function(jq, txt){
