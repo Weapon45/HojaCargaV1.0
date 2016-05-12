@@ -7,7 +7,7 @@ var fn = {
 		window.location.href = '#login';
 		$('#BtnLogin').tap(fn.Loguear);
 		$('#BtnNueva').tap(fn.nuevaHC);
-		$('#btnNewLPN').tap(fn.leerLpn);
+		$('#btnNewLPN').tap(HC.leerLpn);
 		$('#HistorialCapturado').tap(fn.consultaLHC);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(fn.generarReimpresion);
@@ -94,7 +94,7 @@ var fn = {
 			navigator.notification.alert("Todos los campos son requeridos",null,"Error Reimpresion","Aceptar");
 		}
 	},
-	leerLpn: function(){
+	/*leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
 			  $.mobile.loading("show",{theme: 'b'});
@@ -123,7 +123,7 @@ var fn = {
 			  navigator.notification.alert("Fallo al Scanear: " + error,null,"Error","Aceptar");
 		  }
 	   );
-	},
+	},*/
 	nuevaHC: function(){
 		window.location.href="#nuevaHoja";
 	},
