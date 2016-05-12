@@ -121,4 +121,4 @@ var fn = {
 	   );
 	}
 };
-$(fn.ready);
+$(fn.init);
