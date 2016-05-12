@@ -44,33 +44,30 @@ var HC = {
 		HC.cantidadhc = cantidadhc;
 		//navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 		
-		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",20000);
+		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",200000);
 		HC.db.transaction(HC.insertarLineas,HC.error,null);
 	},
 	insertarLineas: function(tx){
-		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (part_code,part_description,dc_license_plate_id,ic_lot_number,quantity)");
-		tx.executeSql("INSERT INTO lineas (part_code,part_description,dc_license_plate_id,ic_lot_number,quantity) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity)");
+		tx.executeSql("INSERT INTO lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
+		tx.executeSql("SELECT * FROM lineas", [], function(tx2, t){
+			for(i = 0; i < t.rows.lenght; i++){
+				navigator.notification.alert(t.rows.item(i).partcode);
+			}
+		});
 	},
 	error: function(){
 		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
 	},
 	consultaLineas: function(){
-		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",20000);
+		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",200000);
 		HC.db.transaction(HC.mostrarLineas,HC.error,null);
 	},
-	mostrarLineas: function(tx4){
-		tx4.executeSql("SELECT * FROM lineas",[], function(tx4, t){
-		//	var grid = '<div class="ui-grid-b"><div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">PERSONAS</div></div><div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">DIAS</div></div><div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">TIPO</div></div></div>';
-		//	$("#lin").html(grid);
-			//var x = 0;
-			var tabla = '<div data-role="listview" data-inset="true"><li><h1>LINEA</h1><ul><li>t.rows.item(i).part_code </li><li>t.rows.item(i).part_description</li><li>t.rows.item(i).dc_license_plate_id</li><li>t.rows.item(i).ic_lot_number</li><li>t.rows.item(i).quantity</li></ul></li></div>';
-			$("#lin").html(tabla);
-			//for(i = 0; i < t.rows.lenght; i++){
-				//navigator.notification.alert(t.rows.item(i).part_code + " " + t.rows.item(i).part_description + " " + t.rows.item(i).dc_license_plate_id + " " + t.rows.item(i).ic_lot_number + " " + t.rows.item(i).quantity);
-				//tabla += '<li><h1>LINEA</h1><ul><li>' + t.rows.item(i).part_code + '</li><li>' + t.rows.item(i).part_description + '</li><li>' + t.rows.item(i).dc_license_plate_id + '</li><li>' + t.rows.item(i).ic_lot_number + '</li><li>' + t.rows.item(i).quantity + '</li></ul></li>';
-			//}	
-			//tabla += '</div>';
-			//$("#lin").html(tabla);
+	mostrarLineas: function(tx2){
+		tx4.executeSql("SELECT * FROM lineas", [], function(tx2, t){
+			for(i = 0; i < t.rows.lenght; i++){
+				navigator.notification.alert(t.rows.item(i).partcode);
+			}
 		});
 	}
 }
