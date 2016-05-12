@@ -42,5 +42,18 @@ var HC = {
 		HC.lotehc = lotehc;
 		HC.cantidadhc = cantidadhc;
 		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
+		
+		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",20000);
+		HC.db.transaction(HC.insertarLineas,HC.error,HC.lineasGuardadas);
+	},
+	insertarLineas: function(tx){
+		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (part_code,part_description,dc_license_plate_id,ic_lot_number,quantity)");
+		tx.executeSql("INSERT INTO lineas (part_code,part_description,dc_license_plate_id,ic_lot_number,quantity) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
+	},
+	error: function(){
+		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
+	},
+	lineasGuardadas: function(){
+		navigator.notification.alert("LPN capturada Correctamente",null,"Correcto","Aceptar");
 	}
 }
