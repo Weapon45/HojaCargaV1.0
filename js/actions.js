@@ -101,7 +101,8 @@ var fn = {
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
 				data: {lpn: lpns},
 				dataType: "json",
-				success: function (msg){					
+				success: function (msg){	
+					$.mobile.loading("show",{theme: 'b'});
 					//alert(JSON.stringify(msg));
 					$.each(msg, function(i, item){
 						//alert(msg[i].NUM);
