@@ -127,4 +127,4 @@ var fn = {
 		window.location.href="#nuevaHoja";
 	}
 };
-$(fn.init);
+$(fn.ready);
