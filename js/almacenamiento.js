@@ -46,7 +46,11 @@ var HC = {
 		//navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 		
 		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",50000);
-		HC.db.transaction(HC.insertarLineas,HC.error,null);
+		HC.db.transaction(function(tx){
+		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity)");
+		tx.executeSql("INSERT INTO lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
+	},HC.error,null);
+		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 	},
 	insertarLineas: function(tx){
 		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
