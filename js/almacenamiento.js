@@ -45,7 +45,7 @@ var HC = {
 		//navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 		
 		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",20000);
-		HC.db.transaction(HC.insertarLineas,HC.error,HC.lineasGuardadas);
+		HC.db.transaction(HC.insertarLineas,HC.error,null);
 	},
 	insertarLineas: function(tx){
 		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (part_code,part_description,dc_license_plate_id,ic_lot_number,quantity)");
@@ -54,7 +54,19 @@ var HC = {
 	error: function(){
 		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
 	},
-	lineasGuardadas: function(){
-		//navigator.notification.alert("LPN capturada Correctamente",null,"Correcto","Aceptar");
+	consultaLineas: function(){
+		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",20000);
+		HC.db.transaction(HC.mostrarLineas,HC.error,null);
+	},
+	mostrarLineas: function(tx4){
+		tx4.executeSql("SELECT * FROM lineas",[], function(tx4, t){
+			var x = 0;
+			var tabla = '<div role="main" class="ui-content"><div data-role="listview" data-inset="true">';
+			for(i = 0; i < t.rows.lenght; i++){
+				tabla += '<li><h1>LINEA ' + x = x + 1 + '</h1><ul><li>' + t.rows.item(i).part_code + '</li><li>' + t.rows.item(i).part_description + '</li><li>' + t.rows.item(i).dc_license_plate_id + '</li><li>' + t.rows.item(i).ic_lot_number + '</li><li>' + t.rows.item(i).quantity + '</li></ul></li>';
+			}	
+			tabla += '</div></div>'
+			$("#consultaLineas").html(tabla);	
+		});
 	}
 }
