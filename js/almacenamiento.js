@@ -60,14 +60,8 @@ var HC = {
 	},
 	mostrarLineas: function(tx4){
 		tx4.executeSql("SELECT * FROM lineas",[], function(tx4, t){
-			//var x = 0;
-			//var tabla = '<div data-role="listview" data-inset="true">';
-			for(i = 0; i < t.rows.lenght; i++){
-				navigator.notification.alert(t.rows.item(i).part_code + " " + t.rows.item(i).part_description + " " + t.rows.item(i).dc_license_plate_id + " " + t.rows.item(i).ic_lot_number + " " + t.rows.item(i).quantity);
-				//tabla += '<li><h1>LINEA</h1><ul><li>' + t.rows.item(i).part_code + '</li><li>' + t.rows.item(i).part_description + '</li><li>' + t.rows.item(i).dc_license_plate_id + '</li><li>' + t.rows.item(i).ic_lot_number + '</li><li>' + t.rows.item(i).quantity + '</li></ul></li>';
-			}	
-			//tabla += '</div>';
-			//$("#lin").html(tabla);	
+			var grid = '<div class="ui-grid-b"><div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">PERSONAS</div></div><div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">DIAS</div></div><div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">TIPO</div></div></div>';
+			$("#lin").html(grid);
 		});
 	}
 }
