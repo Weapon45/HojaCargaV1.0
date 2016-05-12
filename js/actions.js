@@ -8,6 +8,7 @@ var fn = {
 		$('#BtnLogin').tap(fn.Loguear);
 		$('#BtnNueva').tap(fn.nuevaHC);
 		$('#btnNewLPN').tap(fn.leerLpn);
+		$('#HistorialCapturado').tap(fn.consultaLHC);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(fn.generarReimpresion);
 	},
@@ -125,6 +126,9 @@ var fn = {
 	},
 	nuevaHC: function(){
 		window.location.href="#nuevaHoja";
+	},
+	consultaLHC: function(){
+		window.location.href="#consultaLineas";
 	}
 };
 $(fn.ready);
