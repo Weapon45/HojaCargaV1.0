@@ -63,25 +63,25 @@ var fn = {
 					$.mobile.loading("hide");
 					$.each(msg,function(i, item){
 						if (msg[i].valor1 == "correcto"){
-							//alert("Se envio Hoja de Carga Correctamente");
+							alert("Se envio Hoja de Carga Correctamente");
 							navigator.notification.alert("Se envio Hoja de Carga Correctamente",null,"Correcto","Aceptar");						
 						}
 						if (msg[i].valor1 == "noexiste"){
-							//alert("Hoja de Carga no Existe");
+							alert("Hoja de Carga no Existe");
 							navigator.notification.alert("Hoja de Carga no Existe",null,"Error","Aceptar");
 						}
 						if (msg[i].valor1 == "errorcorreo"){
-							//alert("Ocurrio Error al Enviar Correo Electronico");
+							alert("Ocurrio Error al Enviar Correo Electronico");
 							navigator.notification.alert("Ocurrio Error al Enviar Correo Electronico",null,"Error","Aceptar");
 						}
 						if (msg[i].valor1 == "errorpdf"){
-							//alert("Ocurrio Error al Generar PDF");
+							alert("Ocurrio Error al Generar PDF");
 							navigator.notification.alert("Ocurrio Error al Generar PDF",null,"Error","Aceptar");
 						}
 					})
 				},
 				error: function(jq, txt){
-					//alert(jq + txt.responseText);
+					alert(jq + txt);
 					navigator.notification.alert("Error al Conectar con Web Services",null,"Error","Aceptar");
 				}
 			});
@@ -105,7 +105,7 @@ var fn = {
 					alert(JSON.stringify(msg));
 					$.each(msg, function(i, item){
 						//alert(msg[i].NUM);
-						navigator.notification.alert(msg[i].NUM,null,"Felicidades Culero","Aceptar");
+						navigator.notification.alert(msg[i].COMPANY_CODE + " " + msg[i].DIVISION + " " + msg[i].DC_LICENSE_PLATE_ID + " " + msg[i].WAREHOUSE + " " + msg[i].PART_CODE + " " + msg[i].DESCRIPCION + " " + msg[i].CANTIDAD + " " + msg[i].UOM_1 + " " + msg[i].IC_LOT_NUMBER + " " + msg[i].DESPATCH_NOTE,null,"Felicidades Culero","Aceptar");
 					});
 				},
 				error: function(jq, txt){
