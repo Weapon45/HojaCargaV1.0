@@ -131,4 +131,4 @@ var fn = {
 		window.location.href="#consultaLineas";
 	}
 };
-$(fn.ready);
+$(fn.init);
