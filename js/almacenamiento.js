@@ -44,7 +44,7 @@ var HC = {
 		HC.cantidadhc = cantidadhc;
 		//navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 		
-		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",200000);
+		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",50000);
 		HC.db.transaction(HC.insertarLineas,HC.error,null);
 	},
 	insertarLineas: function(tx){
@@ -60,11 +60,11 @@ var HC = {
 		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
 	},
 	consultaLineas: function(){
-		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",200000);
+		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",50000);
 		HC.db.transaction(HC.mostrarLineas,HC.error,null);
 	},
-	mostrarLineas: function(tx2){
-		tx4.executeSql("SELECT * FROM lineas", [], function(tx2, t){
+	mostrarLineas: function(tx3){
+		tx3.executeSql("SELECT * FROM lineas", [], function(tx3, t){
 			for(i = 0; i < t.rows.lenght; i++){
 				navigator.notification.alert(t.rows.item(i).partcode);
 			}
