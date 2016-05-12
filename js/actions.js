@@ -102,10 +102,10 @@ var fn = {
 				dataType: "json",
 				success: function (msg){
 					$.mobile.loading("hide");
-					alert(JSON.stringify(msg));
+					//alert(JSON.stringify(msg));
 					$.each(msg, function(i, item){
 						//alert(msg[i].NUM);
-						navigator.notification.alert(msg[i].COMPANY_CODE + " " + msg[i].DIVISION + " " + msg[i].DC_LICENSE_PLATE_ID + " " + msg[i].WAREHOUSE + " " + msg[i].PART_CODE + " " + msg[i].DESCRIPCION + " " + msg[i].CANTIDAD + " " + msg[i].UOM_1 + " " + msg[i].IC_LOT_NUMBER + " " + msg[i].DESPATCH_NOTE,null,"Felicidades Culero","Aceptar");
+						navigator.notification.alert("compañia: " + msg[i].COMPANY_CODE + "division: " + msg[i].DIVISION + "lpn: " + msg[i].DC_LICENSE_PLATE_ID + "almacen: " + msg[i].WAREHOUSE + "codigo: " + msg[i].PART_CODE + "descripcion: " + msg[i].DESCRIPCION + "cantidad: " + msg[i].CANTIDAD + "unidad: " + msg[i].UOM_1 + "lote: " + msg[i].IC_LOT_NUMBER + "nota: " + msg[i].DESPATCH_NOTE,null,"Felicidades Culero","Aceptar");
 					});
 				},
 				error: function(jq, txt){
