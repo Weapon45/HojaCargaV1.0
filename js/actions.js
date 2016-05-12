@@ -14,27 +14,28 @@ var fn = {
 		// FUNCION PARA LOGUEARSE
 		var nom = $('#user').val();
 		var passw = $('#pass').val();
-		//alert(passw);
 		if(nom != '' && passw != ''){	
 			$.mobile.loading("show",{theme: 'b'});
 			$.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/login',
 				data: {usuario: nom, pass: passw},
-				contentType: "application/json; charset=utf-8",
-				dataType: "jsonp",
+				dataType: "json",
 				success: function (msg){
 					$.mobile.loading("hide");
-					if (msg.valor1 == "correcto"){
-						window.location.href="#menu";
-						//navigator.notification.alert(msg.valor1,null,"Felicidades","Aceptar");
-					}
-					else{
-						navigator.notification.alert("Usuario y/o Contraseña Incorrecto",null,"Error","Aceptar");
-					}					
+					$.each(msg,function(i, item){
+						if (msg[i].valor1 == "correcto"){
+							window.location.href = "#menu";							
+						}
+						else{
+							//alert("Usuario y/o Contraseña Incorrecto");
+							navigator.notification.alert("Usuario y/o Contraseña Incorrecto",null,"Error","Aceptar");
+						}
+					})
 				},
 				error: function(jq, txt){
-					alert(jq + txt.responseText);
+					//alert(jq + txt.responseText);
+					navigator.notification.alert("Error al Conectar con Web Services",null,"Error","Aceptar");
 				}
 			});
 		}
@@ -57,27 +58,34 @@ var fn = {
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/reimpresion',
 				data: {division: diviReimpresion, hojacarga: hojaReimpresion, email: emailReimpresion},
-				contentType: "application/json; charset=utf-8",
-				dataType: "jsonp",
+				dataType: "json",
 				success: function (msg){
 					$.mobile.loading("hide");
-					if (msg.valor1 == "correcto"){
-						navigator.notification.alert("Se envio hoja de carga correctamente",null,"Correcto","Aceptar");
-					}
-					if (msg.valor1 == "noexiste") {
-						navigator.notification.alert("Hoja de Carga no Existe",null,"Error","Aceptar");
-					}					
-					if (msg.valor1 == "errorcorreo") {
-						navigator.notification.alert("Ocurrio un Error al Enviar Correo Electronico",null,"Error","Aceptar");
-					}
-					if (msg.valor1 == "errorpdf") {
-						navigator.notification.alert("Ocurrio un Error al Generar PDF",null,"Error","Aceptar");
-					}
+					$.each(msg,function(i, item){
+						if (msg[i].valor1 == "correcto"){
+							//alert("Se envio Hoja de Carga Correctamente");
+							navigator.notification.alert("Se envio Hoja de Carga Correctamente",null,"Correcto","Aceptar");						
+						}
+						if (msg[i].valor1 == "noexiste"){
+							//alert("Hoja de Carga no Existe");
+							navigator.notification.alert("Hoja de Carga no Existe",null,"Error","Aceptar");
+						}
+						if (msg[i].valor1 == "errorcorreo"){
+							//alert("Ocurrio Error al Enviar Correo Electronico");
+							navigator.notification.alert("Ocurrio Error al Enviar Correo Electronico",null,"Error","Aceptar");
+						}
+						if (msg[i].valor1 == "errorpdf"){
+							//alert("Ocurrio Error al Generar PDF");
+							navigator.notification.alert("Ocurrio Error al Generar PDF",null,"Error","Aceptar");
+						}
+					})
 				},
 				error: function(jq, txt){
-					alert(jq + txt.responseText);
+					//alert(jq + txt.responseText);
+					navigator.notification.alert("Error al Conectar con Web Services",null,"Error","Aceptar");
 				}
 			});
+			
 		}
 		else{
 			navigator.notification.alert("Todos los campos son requeridos",null,"Error Reimpresion","Aceptar");
@@ -86,27 +94,29 @@ var fn = {
 	leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
-			  //alert("Result: " + result.text);
-			  //navigator.notification.alert("Resultado: " + result.text,null,"Felicidades","Aceptar");
+			  var lpns = result.text; 
 			  $.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
-				data: {lpn: result.text},
-				contentType: "application/json; charset=utf-8",
-				dataType: "jsonp",
+				data: {lpn: lpns},
+				dataType: "json",
 				success: function (msg){
 					$.mobile.loading("hide");
-					alert(msg);
-					alert(msg.valor1);
-					alert(JSON.parse(msg));
+					alert(JSON.stringify(msg));
+					$.each(msg, function(i, item){
+						//alert(msg[i].NUM);
+						navigator.notification.alert(msg[i].NUM,null,"Felicidades Culero","Aceptar");
+					});
 				},
 				error: function(jq, txt){
-					alert(jq + txt.responseText);
+					//alert(jq + txt);
+					navigator.notification.alert("Error al Conectar con Web Services",null,"Error","Aceptar");
 				}
 			});
 		  }, 
 		  function (error) {
-			  alert("Scanning failed: " + error);
+			  //alert("Scanning failed: " + error);
+			  navigator.notification.alert("Fallo al Scanear: " + error,null,"Error","Aceptar");
 		  }
 	   );
 	}
