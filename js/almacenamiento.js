@@ -44,16 +44,23 @@ var HC = {
 	mostrarDatos: function(tx2){
 		tx2.executeSql("SELECT * FROM datos", [], function(tx2, t){
 			var x = 0;	
-			var tabla = '<ul data-role="listview" data-inset="true"><li data-role="list-divider">';			
+			var tabla = '<li data-role="list-divider"><center><h1>CONTENIDO HOJA CARGA<h1></center></li>';			
 			for(i = 0; i < t.rows.length; i++){
 					x = x + 1;	
-				tabla += '<li><h2>LINEA ' + x + '</h2><ul><li>' + t.rows.item(i).d1 + '</li><li>' + t.rows.item(i).d2 + '</li><li>' + t.rows.item(i).d3 + '</li><li>' + t.rows.item(i).d4 + '</li><li>' + t.rows.item(i).d5 + '</li></ul></li>';
+				tabla += '<li><h5>LINEA ' + x + '</h5><ul><li>' + t.rows.item(i).d1 + '</li><li>' + t.rows.item(i).d2 + '</li><li>' + t.rows.item(i).d3 + '</li><li>' + t.rows.item(i).d4 + '</li><li>' + t.rows.item(i).d5 + '</li></ul></li>';
 			}
-			tabla += '</li></ul>';
 			$("#lin").html(tabla);
 		});
 	},
 	error: function(){
-		alert("error base de datos");
+		//alert("error base de datos");
+		navigator.notification.alert("Error Base de Datos",null,"Error BD","Aceptar");
+		//var tabla = '<ul data-role="listview" data-inset="true"><li data-role="list-divider"><center>LECTURA DE LPNS</center></li>';
+		//tabla += '<li><a href="#" id="btnNewLPN">Nueva LPN</a></li><li><a href="#consultaLineas" id="HistorialCapturado">Lineas Hoja Carga</a></li>';
+		//tabla += '</ul>'
+		//	$("#lin").html(tabla);
+		//var tabla = '<li data-role="list-divider"><center><h1>CONTENIDO HOJA CARGA<h1></center></li>';
+		//tabla += '<li><h5>LINEA</h5><ul><li>sjvhsdf</li><li>sfdajasda</li><li>bncda</li></ul></li>';
+		//$("#lin").html(tabla);
 	}
 }
