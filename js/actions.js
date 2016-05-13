@@ -8,7 +8,7 @@ var fn = {
 		$('#BtnLogin').tap(fn.Loguear);
 		$('#BtnNueva').tap(fn.nuevaHC);
 		$('#btnNewLPN').tap(HC.leerLpn);
-		$('#HistorialCapturado').tap(fn.consultaLHC);
+		$('#HistorialCapturado').tap(HC.consultaDatos);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(fn.generarReimpresion);
 	},
