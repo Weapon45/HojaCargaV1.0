@@ -50,11 +50,6 @@ var HC = {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (d1,d2,d3,d4,d5)");
 		tx.executeSql("INSERT INTO lineas (d1,d2,d3,d4,d5) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
 		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
-		HC.partcodehc = null;
-		HC.descriptionhc = null;
-		HC.lpnhc = null;
-		HC.lotehc = null;
-		HC.cantidadhc = null;
 	},
 	error: function(){
 		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
