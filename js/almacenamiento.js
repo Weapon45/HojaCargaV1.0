@@ -1,10 +1,5 @@
 var HC = {
 	db: null,
-	partcodehc: null,
-	descriptionhc: null,
-	lpnhc: null,
-	lotehc: null,
-	cantidadhc: null,
 	leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
@@ -19,6 +14,15 @@ var HC = {
 					//alert(JSON.stringify(msg));
 					$.each(msg, function(i, item){					
 						alert(msg[i].PART_CODE + " " + msg[i].DESCRIPCION + " " + msg[i].DC_LICENSE_PLATE_ID + " " + msg[i].IC_LOT_NUMBER + " " + msg[i].CANTIDAD + " " + msg[i].UOM_1);
+						
+						HC.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
+						HC.db.transaction(function(tx){
+							tx.executeSql("CREATE TABLE IF NOT EXISTS datos (d1,d2,d3,d4,d5)");
+							tx.executeSql("INSERT INTO datos (d1,d2,d3,d4,d5) VALUES ('" + msg[i].PART_CODE + "','" + msg[i].DESCRIPCION + "','" + msg[i].DC_LICENSE_PLATE_ID + "','" + msg[i].IC_LOT_NUMBER + "','" + msg[i].CANTIDAD + "')");
+							alert(msg[i].PART_CODE + " " + msg[i].DESCRIPCION + " " + msg[i].DC_LICENSE_PLATE_ID + " " + msg[i].IC_LOT_NUMBER + " " + msg[i].CANTIDAD + " " + msg[i].UOM_1);
+						},function(){
+							alert("Error insertando datos");
+						},null);
 					});
 					$.mobile.loading("hide");
 				},
