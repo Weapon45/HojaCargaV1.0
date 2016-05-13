@@ -1,5 +1,4 @@
 var HC = {
-	db: null,
 	leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
@@ -44,7 +43,7 @@ var HC = {
 	},
 	mostrarDatos: function(tx2){
 		tx2.executeSql("SELECT * FROM datos", [], function(tx2, t){
-			for(i = 0; i < r.rows.length; i++){
+			for(i = 0; i < t.rows.length; i++){
 				alert(t.rows.item(i).d1 + " " + t.rows.item(i).d2 + " " + t.rows.item(i).d3 + " " + t.rows.item(i).d4 + " " + t.rows.item(i).d5);
 			}
 		});
