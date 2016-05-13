@@ -40,6 +40,7 @@ var HC = {
 	},
 	consultaDatos: function(){
 		HC.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
+		HC.db.transaction(HC.mostrarDatos,HC.error,null);
 	},
 	mostrarDatos: function(tx2){
 		tx2.executeSql("SELECT * FROM datos", [], function(tx2, t){
@@ -47,5 +48,8 @@ var HC = {
 				alert(t.rows.item(i).d1 + " " + t.rows.item(i).d2 + " " + t.rows.item(i).d3 + " " + t.rows.item(i).d4 + " " + t.rows.item(i).d5);
 			}
 		});
+	},
+	error: function(){
+		alert("error base de datos");
 	}
 }
