@@ -18,10 +18,9 @@ var HC = {
 				success: function (msg){						
 					//alert(JSON.stringify(msg));
 					$.each(msg, function(i, item){					
-						alert(msg[i].PART_CODE,msg[i].DESCRIPCION,msg[i].DC_LICENSE_PLATE_ID,msg[i].IC_LOT_NUMBER,msg[i].CANTIDAD + " " + msg[i].UOM_1);
+						alert(msg[i].PART_CODE + " " + msg[i].DESCRIPCION + " " + msg[i].DC_LICENSE_PLATE_ID + " " + msg[i].IC_LOT_NUMBER + " " + msg[i].CANTIDAD + " " + msg[i].UOM_1);
 					});
 					$.mobile.loading("hide");
-					navigator.notification.alert("LPN capturada Correctamente",null,"Correcto","Aceptar");
 				},
 				error: function(jq, txt){
 					//alert(jq + txt);
