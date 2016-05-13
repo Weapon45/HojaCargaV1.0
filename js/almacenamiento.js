@@ -11,14 +11,11 @@ var HC = {
 				dataType: "json",
 				success: function (msg){						
 					//alert(JSON.stringify(msg));
-					$.each(msg, function(i, item){					
-						alert(msg[i].PART_CODE + " " + msg[i].DESCRIPCION + " " + msg[i].DC_LICENSE_PLATE_ID + " " + msg[i].IC_LOT_NUMBER + " " + msg[i].CANTIDAD + " " + msg[i].UOM_1);
-						
+					$.each(msg, function(i, item){											
 						HC.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
 						HC.db.transaction(function(tx){
 							tx.executeSql("CREATE TABLE IF NOT EXISTS datos (d1,d2,d3,d4,d5,d6)");
 							tx.executeSql("INSERT INTO datos (d1,d2,d3,d4,d5,d6) VALUES ('" + msg[i].PART_CODE + "','" + msg[i].DESCRIPCION + "','" + msg[i].DC_LICENSE_PLATE_ID + "','" + msg[i].IC_LOT_NUMBER + "','" + msg[i].CANTIDAD + "','" + msg[i].UOM_1 + "')");
-							alert(msg[i].PART_CODE + " " + msg[i].DESCRIPCION + " " + msg[i].DC_LICENSE_PLATE_ID + " " + msg[i].IC_LOT_NUMBER + " " + msg[i].CANTIDAD + " " + msg[i].UOM_1);
 						},function(){
 							alert("Error insertando datos");
 						},null);
@@ -32,7 +29,7 @@ var HC = {
 			});
 		  }, 
 		  function (error) {
-			  //alert("Scanning failed: " + error);
+			  //alert("Fallo al Scanear: " + error);
 			  navigator.notification.alert("Fallo al Scanear: " + error,null,"Error","Aceptar");
 		  }
 	   );
@@ -53,8 +50,6 @@ var HC = {
 		});
 	},
 	error: function(){
-		navigator.notification.alert("Error Base de Datos",null,"Error BD","Aceptar");		
-		//var tabla = '<ul data-role="listview" data-inset="true"><li data-role="list-divider"><center>LINEAS HOJA CARGA</center></li></ul>';
-		//$("#lin").html(tabla);
+		navigator.notification.alert("Error Base de Datos",null,"Error BD","Aceptar");	
 	}
 }
