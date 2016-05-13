@@ -11,7 +11,6 @@ var fn = {
 		$('#HistorialCapturado').tap(fn.consultaLHC);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(fn.generarReimpresion);
-		$('#HistorialCapturado').tap();
 	},
 	Loguear: function(){
 		// FUNCION PARA LOGUEARSE
