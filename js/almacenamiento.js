@@ -49,7 +49,7 @@ var HC = {
 					x = x + 1;	
 				tabla += '<li><h2>LINEA ' + x + '</h2><ul><li>' + t.rows.item(i).d1 + '</li><li>' + t.rows.item(i).d2 + '</li><li>' + t.rows.item(i).d3 + '</li><li>' + t.rows.item(i).d4 + '</li><li>' + t.rows.item(i).d5 + '</li></ul></li>';
 			}
-			tabla += '</div></div>';
+			tabla += '</li></ul>';
 			$("#lin").html(tabla);
 		});
 	},
