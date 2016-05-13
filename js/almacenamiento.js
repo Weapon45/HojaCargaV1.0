@@ -43,17 +43,14 @@ var HC = {
 	},
 	mostrarDatos: function(tx2){
 		tx2.executeSql("SELECT * FROM datos", [], function(tx2, t){
+			var tabla = '<div data-role="listview" data-inset="true">';			
 			for(i = 0; i < t.rows.length; i++){
-				//var x = 0;
-			var tabla = '<div data-role="listview" data-inset="true">';
-			for(i = 0; i < t.rows.lenght; i++){
-				navigator.notification.alert(t.rows.item(i).part_code + " " + t.rows.item(i).part_description + " " + t.rows.item(i).dc_license_plate_id + " " + t.rows.item(i).ic_lot_number + " " + t.rows.item(i).quantity);
+				//var x = 0;			
 				tabla += '<li><h1>LINEA</h1><ul><li>' + t.rows.item(i).d1 + '</li><li>' + t.rows.item(i).d2 + '</li><li>' + t.rows.item(i).d3 + '</li><li>' + t.rows.item(i).d4 + '</li><li>' + t.rows.item(i).d5 + '</li></ul></li>';
-			}	
-			tabla += '</div>';
-			$("#lin").html(tabla);
 				//alert(t.rows.item(i).d1 + " " + t.rows.item(i).d2 + " " + t.rows.item(i).d3 + " " + t.rows.item(i).d4 + " " + t.rows.item(i).d5);
 			}
+			tabla += '</div>';
+			$("#lin").html(tabla);
 		});
 	},
 	error: function(){
