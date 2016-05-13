@@ -18,7 +18,7 @@ var HC = {
 				success: function (msg){						
 					//alert(JSON.stringify(msg));
 					$.each(msg, function(i, item){					
-						HC.guardarLineas(msg[i].PART_CODE,msg[i].DESCRIPCION,msg[i].DC_LICENSE_PLATE_ID,msg[i].IC_LOT_NUMBER,msg[i].CANTIDAD + " " + msg[i].UOM_1);
+						alert(msg[i].PART_CODE,msg[i].DESCRIPCION,msg[i].DC_LICENSE_PLATE_ID,msg[i].IC_LOT_NUMBER,msg[i].CANTIDAD + " " + msg[i].UOM_1);
 					});
 					$.mobile.loading("hide");
 					navigator.notification.alert("LPN capturada Correctamente",null,"Correcto","Aceptar");
@@ -34,37 +34,5 @@ var HC = {
 			  navigator.notification.alert("Fallo al Scanear: " + error,null,"Error","Aceptar");
 		  }
 	   );
-	},
-	guardarLineas: function(d1,d2,d3,d4,d5){
-		HC.partcodehc = d1;
-		HC.descriptionhc = d2;
-		HC.lpnhc = d3;
-		HC.lotehc = d4;
-		HC.cantidadhc = d5;
-		//navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
-		
-		HC.db = window.openDatabase("hcApp","1.0","HCApp Storage",20000);
-		HC.db.transaction(HC.insertLineas,HC.error,HC.lineasGuardada);
-	},
-	insertLineas: function(tx){
-		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (d1,d2,d3,d4,d5)");
-		tx.executeSql("INSERT INTO lineas (d1,d2,d3,d4,d5) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
-	},
-	error: function(){
-		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
-	},
-	lineasGuardada : function(){
-		navigator.notification.alert("Registro Guardado",null,"Correcto","Aceptar");
-	},
-	consultaLineas: function(){
-		HC.db = window.openDatabase("hcApp","1.0","HCApp Storage",20000);
-		HC.db.transaction(HC.mostrarLineas,HC.error,null);
-	},
-	mostrarLineas: function(tx2){
-		tx2.executeSql("SELECT * FROM lineas", [], function(tx2, t){
-			for(i = 0; i < t.rows.lenght; i++){
-				navigator.notification.alert(t.rows.item(i).d1);
-			}
-		});
 	}
 }
