@@ -49,7 +49,6 @@ var HC = {
 	insertLineas: function(tx){
 		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (d1,d2,d3,d4,d5)");
 		tx.executeSql("INSERT INTO lineas (d1,d2,d3,d4,d5) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
-		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 	},
 	error: function(){
 		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
@@ -61,10 +60,10 @@ var HC = {
 		HC.db = window.openDatabase("hcApp","1.0","HCApp Storage",20000);
 		HC.db.transaction(HC.mostrarLineas,HC.error,null);
 	},
-	mostrarLineas: function(tx3){
-		tx3.executeSql("SELECT * FROM lineas", [], function(tx3, t){
+	mostrarLineas: function(tx2){
+		tx2.executeSql("SELECT * FROM lineas", [], function(tx2, t){
 			for(i = 0; i < t.rows.lenght; i++){
-				navigator.notification.alert(t.rows.item(i).partcode);
+				navigator.notification.alert(t.rows.item(i).d1);
 			}
 		});
 	}
