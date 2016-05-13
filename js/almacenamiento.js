@@ -35,12 +35,12 @@ var HC = {
 		  }
 	   );
 	},
-	guardarLineas: function(partcodehc,descriptionhc,lpnhc,lotehc,cantidadhc){
-		HC.partcodehc = partcodehc;
-		HC.descriptionhc = descriptionhc;
-		HC.lpnhc = lpnhc;
-		HC.lotehc = lotehc;
-		HC.cantidadhc = cantidadhc;
+	guardarLineas: function(d1,d2,d3,d4,d5){
+		HC.partcodehc = d1;
+		HC.descriptionhc = d2;
+		HC.lpnhc = d3;
+		HC.lotehc = d4;
+		HC.cantidadhc = d5;
 		//navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 		
 		HC.db = window.openDatabase("hcApp","1.0","HCApp Storage",20000);
