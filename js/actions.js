@@ -101,4 +101,4 @@ var fn = {
 		window.location.href="#consultaLineas";
 	}
 };
-$(fn.init);
+$(fn.ready);
