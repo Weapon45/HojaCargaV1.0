@@ -17,10 +17,8 @@ var HC = {
 				dataType: "json",
 				success: function (msg){						
 					//alert(JSON.stringify(msg));
-					$.each(msg, function(i, item){
-						//alert(msg[i].NUM);						
+					$.each(msg, function(i, item){					
 						HC.guardarLineas(msg[i].PART_CODE,msg[i].DESCRIPCION,msg[i].DC_LICENSE_PLATE_ID,msg[i].IC_LOT_NUMBER,msg[i].CANTIDAD + " " + msg[i].UOM_1);
-						//navigator.notification.alert("compañia: " + msg[i].COMPANY_CODE + "division: " + msg[i].DIVISION + "lpn: " + msg[i].DC_LICENSE_PLATE_ID + "almacen: " + msg[i].WAREHOUSE + "codigo: " + msg[i].PART_CODE + "descripcion: " + msg[i].DESCRIPCION + "cantidad: " + msg[i].CANTIDAD + "unidad: " + msg[i].UOM_1 + "lote: " + msg[i].IC_LOT_NUMBER + "nota: " + msg[i].DESPATCH_NOTE,null,"Felicidades","Aceptar");
 					});
 					$.mobile.loading("hide");
 					navigator.notification.alert("LPN capturada Correctamente",null,"Correcto","Aceptar");
@@ -45,23 +43,27 @@ var HC = {
 		HC.cantidadhc = cantidadhc;
 		//navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
 		
-		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",50000);
-		HC.db.transaction(function(tx){
-		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity)");
-		tx.executeSql("INSERT INTO lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
-	},HC.error,null);
-		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
+		HC.db = window.openDatabase("hcApp","1.0","HCApp Storage",20000);
+		HC.db.transaction(HC.insertLineas,HC.error,HC.lineasGuardada);
 	},
-	insertarLineas: function(tx){
+	insertLineas: function(tx){
+		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (d1,d2,d3,d4,d5)");
+		tx.executeSql("INSERT INTO lineas (d1,d2,d3,d4,d5) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
 		navigator.notification.alert(HC.partcodehc + " " + HC.descriptionhc + " " + HC.lpnhc + " " + HC.lotehc + " " + HC.cantidadhc);
-		tx.executeSql("CREATE TABLE IF NOT EXISTS lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity)");
-		tx.executeSql("INSERT INTO lineas (partcode,partdescription,dclicenseplateid,iclotnumber,quantity) VALUES ('" + HC.partcodehc + "','" + HC.descriptionhc + "','" + HC.lpnhc + "','" + HC.lotehc + "','" + HC.cantidadhc + "')");
+		HC.partcodehc = null;
+		HC.descriptionhc = null;
+		HC.lpnhc = null;
+		HC.lotehc = null;
+		HC.cantidadhc = null;
 	},
 	error: function(){
 		navigator.notification.alert("Error al acceder a la Base de Datos",null,"Error BD","Aceptar");
 	},
+	lineasGuardada : function(){
+		navigator.notification.alert("Registro Guardado",null,"Correcto","Aceptar");
+	},
 	consultaLineas: function(){
-		HC.db = window.openDatabase("hojacargaApp","1.0","hojacargaApp Storage",50000);
+		HC.db = window.openDatabase("hcApp","1.0","HCApp Storage",20000);
 		HC.db.transaction(HC.mostrarLineas,HC.error,null);
 	},
 	mostrarLineas: function(tx3){
