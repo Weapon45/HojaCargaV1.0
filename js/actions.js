@@ -4,7 +4,6 @@ var fn = {
 		document.addEventListener("backbutton",function(){},false);		
 	},
 	init: function(){
-		// FUNCION PARA INICIO
 		window.location.href = '#login';
 		$('#BtnLogin').tap(acc.Loguear);
 		$('#BtnNueva').tap(fn.nuevaHC);

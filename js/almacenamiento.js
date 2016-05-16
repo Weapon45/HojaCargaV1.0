@@ -56,7 +56,7 @@ var HC = {
 		HC.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
 		HC.db.transaction(function(tx){
 			tx.executeSql("DELETE FROM datos");
-			navigator.notification.alert("Se Elimino Hoja de Carga Almacenada",null,"Informacion","Aceptar");
+			navigator.notification.alert("Se Elimino Informacion LPN's Almacenadas",null,"Informacion","Aceptar");
 		},function(){
 			alert("Error Accesar Base de Datos Eliminar Lineas");
 		},null);
