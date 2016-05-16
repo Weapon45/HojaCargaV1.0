@@ -19,7 +19,7 @@ var fn = {
 	nuevaHC: function(){
 		fn.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
 		fn.db.transaction(function(tx){
-			tx2.executeSql("SELECT * FROM datos", [], function(tx2, t){
+			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
 				if (t.rows.length > 1) {
 					navigator.notification.alert("Si Existen Datos",null,"Felicidades","Aceptar");
 				}
