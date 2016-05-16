@@ -41,7 +41,7 @@ var fn = {
 			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
 				if (t.rows.length > 1) {
 					navigator.notification.confirm("Desea Salir de la Aplicacion, se Eliminara Informacion Capturada al Momento...",function(btn){						
-						if (btn == 2){
+						if (btn == 1){
 							HC.eliminarLineas();
 							navigator.app.exitApp();
 						}
