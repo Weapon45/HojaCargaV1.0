@@ -19,6 +19,7 @@ var fn = {
 	nuevaHC: function(){
 		fn.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
 		fn.db.transaction(function(tx){
+			tx.executeSql("CREATE TABLE IF NOT EXISTS datos (d1,d2,d3,d4,d5,d6)");
 			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
 				if (t.rows.length > 1) {
 					navigator.notification.confirm("Desea Continuar con Hoja de Carga no Terminada....",function(btn){						
@@ -39,6 +40,7 @@ var fn = {
 	cerrarAplicacion: function(){
 		fn.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
 		fn.db.transaction(function(tx2){
+			tx2.executeSql("CREATE TABLE IF NOT EXISTS datos (d1,d2,d3,d4,d5,d6)");
 			tx2.executeSql("SELECT * FROM datos", [], function(tx2, t){
 				if (t.rows.length > 1) {
 					navigator.notification.confirm("Desea Salir de la Aplicacion, Se Perderan los datos Capturados....",function(btn){						
