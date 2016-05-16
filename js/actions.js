@@ -1,7 +1,7 @@
 var fn = {
 	ready: function(){
 		document.addEventListener("deviceready",fn.init,false);
-		document.addEventListener("backbutton",fn.cerrarSesion,false);		
+		document.addEventListener("backbutton",function(){},false);		
 	},
 	init: function(){
 		window.location.href = '#login';
@@ -11,6 +11,7 @@ var fn = {
 		$('#HistorialCapturado').tap(HC.consultaDatos);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(ri.generarReimpresion);
+		$('#BtnCerrar').tap(fn.cerrarAplicacion);
 	},	
 	reimprimir: function(){
 		window.location.href="#Reimpresion";
@@ -35,12 +36,12 @@ var fn = {
 	consultaLHC: function(){
 		window.location.href="#consultaLineas";
 	},
-	cerrarSesion: function(){
+	cerrarAplicacion: function(){
 		fn.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
 		fn.db.transaction(function(tx){
-			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
+			tx.executeSql("SELECT * FROM datos",[], function(tx, t){
 				if (t.rows.length > 1) {
-					navigator.notification.confirm("Desea Salir de la Aplicacion, se Eliminara Informacion Capturada al Momento...",function(btn){						
+					navigator.notification.confirm("Desea Salir de la Aplicacion, se Borrara la Informacion Capturada al Momento...",function(btn){
 						if (btn == 1){
 							HC.eliminarLineas();
 							navigator.app.exitApp();
@@ -56,7 +57,7 @@ var fn = {
 				}
 			});
 		},function(){
-			alert("Error al accesar base de datos aal realizar Back");
+			alert("Error accesar Base de Datos salir");
 		},null);
 	}
 };
