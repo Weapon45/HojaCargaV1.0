@@ -1,7 +1,10 @@
 var fn = {
 	ready: function(){
 		document.addEventListener("deviceready",fn.init,false);
-		document.addEventListener("backbutton",fn.botonregresar,false);
+		document.addEventListener("backbutton",function(){},false);
+		document.addEventListener("menubutton",function(){},false);
+		document.addEventListener("searchbutton",function(){},false);
+		
 	},
 	init: function(){
 		// FUNCION PARA INICIO
