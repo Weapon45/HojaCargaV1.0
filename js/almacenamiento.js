@@ -7,13 +7,15 @@ var HC = {
 			  $.mobile.loading("show",{theme: 'b'});
 			  HC.lpns = result.text; 
 			  alert(HC.lpns);
-			  if (HC.lpnstotal.indexOf(HC.lpns) != -1){
-				  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns
-			  }
+			  if (HC.lpnstotal = null){
+				  HC.lpnstotal = HC.lpns;
+				  alert("LPNSTOTAL: " + HC.lpnstotal);
+			  }	  
 			  else{
-				  navigator.notification.alert("Lpn: " & HC.lpns & "ya se encuentra Capturada",null,"Notificacion","Aceptar");
-				  return false;
-			  }			  
+				  if (HC.lpnstotal.indexOf(HC.lpns) != -1){
+					  alert("Ya Existe");
+				  }
+			  }
 			  $.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
