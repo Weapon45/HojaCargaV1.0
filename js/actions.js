@@ -21,7 +21,8 @@ var fn = {
 		fn.db.transaction(function(tx){
 			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
 				if (t.rows.length > 1) {
-					navigator.notification.confirm("Desea Continuar con Hoja de Carga no Terminada....",fn.sinCotinuar(btn),"Confirmacion","Si,No,Cancelar");
+					//navigator.notification.confirm("Desea Continuar con Hoja de Carga no Terminada....",fn.sinCotinuar(btn),"Confirmacion","Si,No,Cancelar");
+					navigator.notification.alert("Desea Continuar con Hoja de Carga no Terminada...",null,"Confirmacion","Aceptar");
 				}
 			});
 		},function(){
@@ -32,7 +33,7 @@ var fn = {
 	consultaLHC: function(){
 		window.location.href="#consultaLineas";
 	},
-	sinCotinuar: function(btn){	
+	sinContinuar: function(btn){	
 		if (btn == 2 && btn == 3){
 			alert("Entro a Funcion Eliminar Historial Capturado");
 		}
