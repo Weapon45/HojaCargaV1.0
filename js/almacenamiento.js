@@ -8,8 +8,13 @@ var HC = {
 			  HC.lpns = result.text; 
 			  alert(HC.lpns + " " + HC.lpnstotal);	
 			  if (HC.lpnstotal != null){
-				  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns;
-				  alert("LPNS TOTAL 2: " + HC.lpnstotal);
+				  if(HC.lpnstotal.indexOf(HC.lpns) != -1){
+					 alert("LPN ya Capturada"); 
+				  }
+				  else{
+					  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns;
+				  	  alert("LPNS TOTAL 2: " + HC.lpnstotal);
+				  }
 			  }
 			  else{
 				  HC.lpnstotal = HC.lpns;
@@ -18,7 +23,7 @@ var HC = {
 			  $.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
-				data: {lpn: lpns},
+				data: {lpn: HC.lpns},
 				dataType: "json",
 				success: function (msg){						
 					//alert(JSON.stringify(msg));
