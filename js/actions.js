@@ -21,15 +21,11 @@ var fn = {
 		fn.db.transaction(function(tx){
 			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
 				if (t.rows.length > 1) {
-					navigator.notification.confirm("Desea Continuar con Hoja de Carga no Terminada....",function(btn){
-						if (btn == 1){
-							alert("Click en Si");
-						}
+					navigator.notification.confirm("Desea Continuar con Hoja de Carga no Terminada....",function(btn){						
 						if (btn == 2){
-							alert("Click en No");
+							HC.eliminarLineas();
 						}
 					},"Confirmacion","Si,No");
-					//navigator.notification.alert("Desea Continuar con Hoja de Carga no Terminada...",null,"Confirmacion","Aceptar");
 				}
 			});
 		},function(){
