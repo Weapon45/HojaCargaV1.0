@@ -1,9 +1,19 @@
 var HC = {
+	lpns: null,
+	lpnstotal: null,
 	leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
 			  $.mobile.loading("show",{theme: 'b'});
-			  var lpns = result.text; 
+			  HC.lpns = result.text; 
+			  alert(HC.lpns);
+			  if (HC.lpnstotal.indexOf(HC.lpns) != -1){
+				  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns
+			  }
+			  else{
+				  navigator.notification.alert("Lpn: " & HC.lpns & "ya se encuentra Capturada",null,"Notificacion","Aceptar");
+				  return false;
+			  }			  
 			  $.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
