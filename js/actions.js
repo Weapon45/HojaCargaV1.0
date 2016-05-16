@@ -1,7 +1,7 @@
 var fn = {
 	ready: function(){
 		document.addEventListener("deviceready",fn.init,false);
-		document.addEventListener("backbutton",function(){},false);		
+		document.addEventListener("backbutton",fn.cerrarSesion,false);		
 	},
 	init: function(){
 		window.location.href = '#login';
@@ -25,7 +25,7 @@ var fn = {
 							HC.eliminarLineas();
 						}
 					},"Confirmacion","Si,No");
-				}
+				}				
 			});
 		},function(){
 			alert("Error al accesar base de datos al iniciar nueva hoja");
@@ -34,6 +34,30 @@ var fn = {
 	},
 	consultaLHC: function(){
 		window.location.href="#consultaLineas";
+	},
+	cerrarSesion: function(){
+		fn.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
+		fn.db.transaction(function(tx){
+			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
+				if (t.rows.length > 1) {
+					navigator.notification.confirm("Desea Salir de la Aplicacion, se Eliminara Informacion Capturada al Momento...",function(btn){						
+						if (btn == 2){
+							HC.eliminarLineas();
+							navigator.app.exitApp();
+						}
+					},"Confirmacion","Si,No");
+				}
+				else{
+					navigator.notification.confirm("Desea Salir de la Aplicacion",function(btn){
+						if (btn == 1){
+							navigator.app.exitApp();
+						}
+					},"Confirmacion","Si,No");
+				}
+			});
+		},function(){
+			alert("Error al accesar base de datos aal realizar Back");
+		},null);
 	}
 };
 $(fn.init);
