@@ -6,10 +6,10 @@ var HC = {
 		  function (result) {
 			  $.mobile.loading("show",{theme: 'b'});
 			  HC.lpns = result.text; 
-			  alert(HC.lpns + " " + HC.lpnstotal);	
 			  if (HC.lpnstotal != null){
 				  if(HC.lpnstotal.indexOf(HC.lpns) != -1){
-					 alert("LPN ya Capturada"); 
+					 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada");
+					  return false;
 				  }
 				  else{
 					  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns;
@@ -18,7 +18,6 @@ var HC = {
 			  }
 			  else{
 				  HC.lpnstotal = HC.lpns;
-				  alert("LPNS TOTAL 1: " + HC.lpnstotal);
 			  }
 			  $.ajax({
 				method: 'POST',
