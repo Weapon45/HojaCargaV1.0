@@ -60,4 +60,4 @@ var fn = {
 		},null);
 	}
 };
-$(fn.init);
+$(fn.ready);
