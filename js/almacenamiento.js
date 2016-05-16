@@ -8,12 +8,12 @@ var HC = {
 			  HC.lpns = result.text; 
 			  if (HC.lpnstotal != null){
 				  if(HC.lpnstotal.indexOf(HC.lpns) != -1){
-					 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada");
-					  return false;
+					 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada",null,"Notificación","Aceptar");
+					 $.mobile.loading("hide");
+					 return false;
 				  }
 				  else{
 					  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns;
-				  	  alert("LPNS TOTAL 2: " + HC.lpnstotal);
 				  }
 			  }
 			  else{

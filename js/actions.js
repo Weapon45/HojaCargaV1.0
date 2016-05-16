@@ -12,6 +12,7 @@ var fn = {
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(ri.generarReimpresion);
 		$('#BtnCerrar').tap(fn.cerrarAplicacion);
+		$('#BtnGenerar').tap(fn.Generar);
 	},	
 	reimprimir: function(){
 		window.location.href="#Reimpresion";
@@ -61,6 +62,9 @@ var fn = {
 		},function(){
 			alert("Error al salir");
 		},null);
+	},
+	Generar: function(){
+		alert(HC.lpnstotal);
 	}
 };
 $(fn.ready);
