@@ -2,8 +2,7 @@ var fn = {
 	ready: function(){
 		document.addEventListener("deviceready",fn.init,false);
 		document.addEventListener("backbutton",function(){},false);
-		document.addEventListener("menubutton",function(){},false);
-		document.addEventListener("searchbutton",function(){},false);
+		document.addEventListener("pause",function(){alert("Realmente quiere salir")},false);
 		
 	},
 	init: function(){
