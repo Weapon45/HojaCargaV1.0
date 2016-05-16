@@ -1,9 +1,7 @@
 var fn = {
 	ready: function(){
 		document.addEventListener("deviceready",fn.init,false);
-		document.addEventListener("backbutton",function(){},false);
-		document.addEventListener("pause",function(){alert("Realmente quiere salir")},true);
-		
+		document.addEventListener("backbutton",function(){},false);		
 	},
 	init: function(){
 		// FUNCION PARA INICIO
@@ -19,6 +17,19 @@ var fn = {
 		window.location.href="#Reimpresion";
 	},
 	nuevaHC: function(){
+		fn.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
+		fn.db.transaction(function(tx){
+			tx2.executeSql("SELECT * FROM datos", [], function(tx2, t){
+				if (t.rows.length > 1) {
+					navigator.notification.alert("Si Existen Datos",null,"Felicidades","Aceptar");
+				}
+				else{
+					navigator.notification.alert("No Existen Datos",null,"Error","Aceptar");
+				}
+			});
+		},function(){
+			alert("Error al accesar base de datos al iniciar nueva hoja");
+		},null);
 		window.location.href="#nuevaHoja";
 	},
 	consultaLHC: function(){
