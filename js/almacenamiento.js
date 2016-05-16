@@ -6,15 +6,14 @@ var HC = {
 		  function (result) {
 			  $.mobile.loading("show",{theme: 'b'});
 			  HC.lpns = result.text; 
-			  alert(HC.lpns);
-			  if (HC.lpnstotal = null){
-				  HC.lpnstotal = HC.lpns;
-				  alert("LPNSTOTAL: " + HC.lpnstotal);
-			  }	  
+			  alert(HC.lpns + " " + HC.lpnstotal);	
+			  if (HC.lpnstotal != null){
+				  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns;
+				  alert("LPNS TOTAL 2: " + HC.lpnstotal);
+			  }
 			  else{
-				  if (HC.lpnstotal.indexOf(HC.lpns) != -1){
-					  alert("Ya Existe");
-				  }
+				  HC.lpnstotal = HC.lpns;
+				  alert("LPNS TOTAL 1: " + HC.lpnstotal);
 			  }
 			  $.ajax({
 				method: 'POST',
