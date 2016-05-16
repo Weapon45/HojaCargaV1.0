@@ -21,10 +21,7 @@ var fn = {
 		fn.db.transaction(function(tx){
 			tx.executeSql("SELECT * FROM datos", [], function(tx, t){
 				if (t.rows.length > 1) {
-					navigator.notification.alert("Si Existen Datos",null,"Felicidades","Aceptar");
-				}
-				else{
-					navigator.notification.alert("No Existen Datos",null,"Error","Aceptar");
+					navigator.notification.confirm("Desea Continuar con Hoja de Carga no Terminada....",fn.sinCotinuar(btn),"Confirmacion","Si,No,Cancelar");
 				}
 			});
 		},function(){
@@ -35,7 +32,10 @@ var fn = {
 	consultaLHC: function(){
 		window.location.href="#consultaLineas";
 	},
-	botonregresar: function(){		
+	sinCotinuar: function(btn){	
+		if (btn == 2 && btn == 3){
+			alert("Entro a Funcion Eliminar Historial Capturado");
+		}
 	}
 };
 $(fn.ready);
