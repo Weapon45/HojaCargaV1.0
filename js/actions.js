@@ -11,7 +11,6 @@ var fn = {
 		$('#HistorialCapturado').tap(HC.consultaDatos);
 		$('#BtnReimpresion').tap(fn.reimprimir);
 		$('#generaReimpresion').tap(ri.generarReimpresion);
-		//$('#BtnCerrar').tap(fn.cerrarSesion);
 	},	
 	reimprimir: function(){
 		window.location.href="#Reimpresion";
@@ -36,8 +35,5 @@ var fn = {
 	consultaLHC: function(){
 		window.location.href="#consultaLineas";
 	}
-	//cerrarSesion: function(){
-	//	navigator.app.exitApp();
-	//}
 };
 $(fn.init);
