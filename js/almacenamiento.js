@@ -1,5 +1,6 @@
 var HC = {
 	lpns: null,
+	procede: null,
 	leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
@@ -13,7 +14,7 @@ var HC = {
 							 if(t.rows.item(i).d3 == HC.lpns){
 								 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada",null,"Notificación","Aceptar");
 								 $.mobile.loading("hide");
-								 return false;
+								 HC.procede = "NO";
 							 }
 						 }
 					 } 
@@ -21,26 +22,16 @@ var HC = {
 			  },function(){
 				  navigator.notification.alert("Error Base de Datos Validando LPN",null,"Notificacion","Aceptar");
 			  },null);
-			  /*if (HC.lpnstotal != null){
-				  if(HC.lpnstotal.indexOf(HC.lpns) != -1){
-					 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada",null,"Notificación","Aceptar");
-					 $.mobile.loading("hide");
-					 return false;
-				  }
-				  else{
-					  HC.lpnstotal = HC.lpnstotal + "," + HC.lpns;
-				  }
+			  if (HC.procede == "NO"){
+				  HC.procede = null;
+				  return false;
 			  }
-			  else{
-				  HC.lpnstotal = HC.lpns;
-			  }*/
 			  $.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
 				data: {lpn: HC.lpns},
 				dataType: "json",
-				success: function (msg){						
-					//alert(JSON.stringify(msg));
+				success: function (msg){			
 					$.each(msg, function(i, item){											
 						HC.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
 						HC.db.transaction(function(tx){
@@ -53,13 +44,11 @@ var HC = {
 					$.mobile.loading("hide");
 				},
 				error: function(jq, txt){
-					//alert(jq + txt);
 					navigator.notification.alert("Error al Conectar con Web Services",null,"Error","Aceptar");
 				}
 			});
 		  }, 
 		  function (error) {
-			  //alert("Fallo al Scanear: " + error);
 			  navigator.notification.alert("Fallo al Scanear: " + error,null,"Error","Aceptar");
 		  }
 	   );
