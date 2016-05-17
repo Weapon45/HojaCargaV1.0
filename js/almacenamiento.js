@@ -14,7 +14,8 @@ var HC = {
 							 if(t.rows.item(i).d3 == HC.lpns){
 								 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada",null,"Notificación","Aceptar");
 								 $.mobile.loading("hide");
-								 HC.procede = "NO";
+								 HC.lpns = null;
+								 return false;
 							 }
 						 }
 					 } 
@@ -22,10 +23,6 @@ var HC = {
 			  },function(){
 				  navigator.notification.alert("Error Base de Datos Validando LPN",null,"Notificacion","Aceptar");
 			  },null);
-			  if (HC.procede == "NO"){
-				  HC.procede = null;
-				  return false;
-			  }
 			  $.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
