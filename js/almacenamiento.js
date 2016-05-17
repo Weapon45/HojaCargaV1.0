@@ -1,12 +1,27 @@
 var HC = {
 	lpns: null,
-	lpnstotal: null,
 	leerLpn: function(){
 		cordova.plugins.barcodeScanner.scan(
 		  function (result) {
 			  $.mobile.loading("show",{theme: 'b'});
 			  HC.lpns = result.text; 
-			  if (HC.lpnstotal != null){
+			  HC.db = window.openDatabase("hcApp","1.0","HojaCargaApp Storage",20000);
+			  HC.db.transaction(function(tx){
+				  tx.executeSql("SELECT * FROM datos",[], function(tx2, t){
+					 if (t.rows.length > 1){
+						 for(i = 0; i < t.rows.length; i++){
+							 if(t.rows.item(i).d3 == HC.lpns){
+								 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada",null,"Notificación","Aceptar");
+								 $.mobile.loading("hide");
+								 return false;
+							 }
+						 }
+					 } 
+				  });
+			  },function(){
+				  navigator.notification.alert("Error Base de Datos Validando LPN",null,"Notificacion","Aceptar");
+			  },null);
+			  /*if (HC.lpnstotal != null){
 				  if(HC.lpnstotal.indexOf(HC.lpns) != -1){
 					 navigator.notification.alert("LPN: " + HC.lpns + ", ya se encuentra capturada",null,"Notificación","Aceptar");
 					 $.mobile.loading("hide");
@@ -18,7 +33,7 @@ var HC = {
 			  }
 			  else{
 				  HC.lpnstotal = HC.lpns;
-			  }
+			  }*/
 			  $.ajax({
 				method: 'POST',
 				url: 'http://servidoriis.laitaliana.com.mx/OV/ServicesHC/HC.asmx/Datos',
